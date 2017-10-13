@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SCLayout"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "Simple layout framework with constraint shortcuts."
   
   s.homepage     = "https://github.com/mevalid/SCLayout"

@@ -26,6 +26,7 @@ import UIKit
 /**
     Set of named layout attributes.
 
+    - center: First elemenet x,y-axis center point equal to the center along the x,y-axis of the second element.
     - centerX: First elemenet x-axis center point equal to the center along the x-axis of the second element.
     - centerY: First elemenet y-axis center point equal to the center along the y-axis of the second element.
     - top: First element top value equal to the top of the second element.
@@ -46,6 +47,7 @@ import UIKit
     - heightFromWidth: First element height value equal to the width of the second element.
  */
 public enum SCAttribute {
+    case center
     case centerX
     case centerY
     case top
@@ -315,6 +317,11 @@ public extension UIView {
     func constraintWithAttribute(to: Any, attribute: SCAttribute, _ constant: CGFloat = 0, _ multiplier: CGFloat = 1) {
         
         switch attribute {
+            
+        case .center:
+            self.centerXConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
+            self.centerYConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
+            NSLayoutConstraint.activate([self.centerXConstraint!, self.centerYConstraint!])
             
         case .centerX:
             self.centerXConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
