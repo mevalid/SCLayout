@@ -29,12 +29,14 @@ class ViewController: UIViewController {
     let view1: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.green
+        v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
     let view2: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.red
+        v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     

@@ -497,7 +497,6 @@ public extension UIView {
     // Sequence call
     func scLayout(_ layouts: [SCLayout]) {
         guard !layouts.isEmpty else { return }
-        self.translatesAutoresizingMaskIntoConstraints = false
         
         var layouts = layouts
         
@@ -513,6 +512,7 @@ public extension UIView {
     
     // Single call
     func scLayout(_ layout: SCLayout) {
-        scLayout([layout])
+        // Perform closure
+        layout.closure(self)
     }
 }
