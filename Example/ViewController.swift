@@ -73,11 +73,11 @@ class ViewController: UIViewController {
      */
     func view1Layout() {
         
-        view1.addSCConstraints { sc in
-            sc.constraintsStretchWidth(50, 50)
-            sc.constraintHeightConstant(c: 100)
-            sc.constraintWithAttribute(to: view, attribute: .top, 50)
-        }
+        view1.scLayout([
+            .stretchWidth(50, 50),
+            .constant(height: 100),
+            .top(to: view, 1, 50)
+        ])
     }
     
     /**
@@ -88,12 +88,12 @@ class ViewController: UIViewController {
      */
     func view2Layout() {
         
-        view2.addSCConstraints { sc in
-            sc.constraintWithAttribute(to: view, attribute: .centerX)
-            sc.constraintWithAttribute(to: view1, attribute: .height)
-            sc.constraintWidthConstant(c: 80)
-            sc.constraintWithAttribute(to: view1, attribute: .topFromBottom, 30)
-        }
+        view2.scLayout([
+            .centerX(to: view),
+            .height(to: view1),
+            .constant(width: 80),
+            .topFromBottom(to: view1, 1, 30)
+        ])
     }
     
     /**
@@ -103,17 +103,23 @@ class ViewController: UIViewController {
         - Set the view3, view4 width to 40 points.
      */
     func formatLayout() {
-        view3.constraintHeightConstant(c: 30)
-        view4.constraintWithAttribute(to: view3, attribute: .height)
         
-        view3.constraintWithAttribute(to: view, attribute: .bottom, -10)
-        view4.constraintWithAttribute(to: view3, attribute: .bottom)
+        view3.scLayout([
+            .constant(height: 30),
+            .bottom(to: view, 1, -10)
+        ])
         
-        view.constraintFormat(format: "H:|-20-[view3(40)]-20-[view4(40)]", [
-            "view3": view3,
-            "view4": view4
+        view4.scLayout([
+            .height(to: view3),
+            .bottom(to: view3)
+        ])
+        
+        view.scLayout(
+            .format(format: "H:|-20-[view3(40)]-20-[view4(40)]", [
+                "view3": view3,
+                "view4": view4
             ])
+        )
     }
-
 }
 
