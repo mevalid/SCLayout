@@ -91,205 +91,235 @@ public struct SCLayout {
      */
     public static func center(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.centerXConstraint = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
-            $0.centerYConstraint = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.centerXConstraint!, $0.centerYConstraint!])
+            let centerX = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
+            let centerY = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
+            centerX.identifier = $0.centerXConstraintIdentifier
+            centerY.identifier = $0.centerYConstraintIdentifier
+            NSLayoutConstraint.activate([centerX, centerY])
         })
     }
     
     public static func centerX(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.centerXConstraint = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.centerXConstraint!])
+            let centerX = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
+            centerX.identifier = $0.centerXConstraintIdentifier
+            NSLayoutConstraint.activate([centerX])
         })
     }
     
     public static func centerY(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.centerYConstraint = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.centerYConstraint!])
+            let centerY = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
+            centerY.identifier = $0.centerYConstraintIdentifier
+            NSLayoutConstraint.activate([centerY])
         })
     }
     
     public static func top(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.topConstraint = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: to, attribute: .top, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.topConstraint!])
+            let top = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: to, attribute: .top, multiplier: multiplier, constant: constant)
+            top.identifier = $0.topConstraintIdentifier
+            NSLayoutConstraint.activate([top])
         })
     }
     
     public static func bottom(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.bottomConstraint = NSLayoutConstraint(item: $0, attribute: .bottom, relatedBy: .equal, toItem: to, attribute: .bottom, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.bottomConstraint!])
+            let bottom = NSLayoutConstraint(item: $0, attribute: .bottom, relatedBy: .equal, toItem: to, attribute: .bottom, multiplier: multiplier, constant: constant)
+            bottom.identifier = $0.bottomConstraintIdentifier
+            NSLayoutConstraint.activate([bottom])
         })
     }
     
     public static func left(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.leftConstraint = NSLayoutConstraint(item: $0, attribute: .left, relatedBy: .equal, toItem: to, attribute: .left, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.leftConstraint!])
+            let left = NSLayoutConstraint(item: $0, attribute: .left, relatedBy: .equal, toItem: to, attribute: .left, multiplier: multiplier, constant: constant)
+            left.identifier = $0.leftConstraintIdentifier
+            NSLayoutConstraint.activate([left])
         })
     }
     
     public static func right(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.rightConstraint = NSLayoutConstraint(item: $0, attribute: .right, relatedBy: .equal, toItem: to, attribute: .right, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.rightConstraint!])
+            let right = NSLayoutConstraint(item: $0, attribute: .right, relatedBy: .equal, toItem: to, attribute: .right, multiplier: multiplier, constant: constant)
+            right.identifier = $0.rightConstraintIdentifier
+            NSLayoutConstraint.activate([right])
         })
     }
     
     public static func height(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.heightConstraint = NSLayoutConstraint(item: $0, attribute: .height, relatedBy: .equal, toItem: to, attribute: .height, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.heightConstraint!])
+            let height = NSLayoutConstraint(item: $0, attribute: .height, relatedBy: .equal, toItem: to, attribute: .height, multiplier: multiplier, constant: constant)
+            height.identifier = $0.heightConstraintIdentifier
+            NSLayoutConstraint.activate([height])
         })
     }
     
     public static func width(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.widthConstraint = NSLayoutConstraint(item: $0, attribute: .width, relatedBy: .equal, toItem: to, attribute: .width, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.widthConstraint!])
+            let width = NSLayoutConstraint(item: $0, attribute: .width, relatedBy: .equal, toItem: to, attribute: .width, multiplier: multiplier, constant: constant)
+            width.identifier = $0.widthConstraintIdentifier
+            NSLayoutConstraint.activate([width])
         })
     }
     
     public static func leftFromCenterX(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.leftConstraint = NSLayoutConstraint(item: $0, attribute: .left, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.leftConstraint!])
+            let left = NSLayoutConstraint(item: $0, attribute: .left, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
+            left.identifier = $0.leftConstraintIdentifier
+            NSLayoutConstraint.activate([left])
         })
     }
     
     public static func rightFromCenterX(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.rightConstraint = NSLayoutConstraint(item: $0, attribute: .right, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.rightConstraint!])
+            let right = NSLayoutConstraint(item: $0, attribute: .right, relatedBy: .equal, toItem: to, attribute: .centerX, multiplier: multiplier, constant: constant)
+            right.identifier = $0.rightConstraintIdentifier
+            NSLayoutConstraint.activate([right])
         })
     }
     
     public static func centerXFromLeft(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.centerXConstraint = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .left, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.centerXConstraint!])
+            let centerX = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .left, multiplier: multiplier, constant: constant)
+            centerX.identifier = $0.centerXConstraintIdentifier
+            NSLayoutConstraint.activate([centerX])
         })
     }
     
     public static func centerXFromRight(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.centerXConstraint = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .right, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.centerXConstraint!])
+            let centerX = NSLayoutConstraint(item: $0, attribute: .centerX, relatedBy: .equal, toItem: to, attribute: .right, multiplier: multiplier, constant: constant)
+            centerX.identifier = $0.centerXConstraintIdentifier
+            NSLayoutConstraint.activate([centerX])
         })
     }
     
     public static func centerYFromTop(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.centerYConstraint = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .top, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.centerYConstraint!])
+            let centerY = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .top, multiplier: multiplier, constant: constant)
+            centerY.identifier = $0.centerYConstraintIdentifier
+            NSLayoutConstraint.activate([centerY])
         })
     }
     
     public static func centerYFromBottom(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.centerYConstraint = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .bottom, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.centerYConstraint!])
+            let centerY = NSLayoutConstraint(item: $0, attribute: .centerY, relatedBy: .equal, toItem: to, attribute: .bottom, multiplier: multiplier, constant: constant)
+            centerY.identifier = $0.centerYConstraintIdentifier
+            NSLayoutConstraint.activate([centerY])
         })
     }
     
     public static func bottomFromCenterY(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.bottomConstraint = NSLayoutConstraint(item: $0, attribute: .bottom, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.bottomConstraint!])
+            let bottom = NSLayoutConstraint(item: $0, attribute: .bottom, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
+            bottom.identifier = $0.bottomConstraintIdentifier
+            NSLayoutConstraint.activate([bottom])
         })
     }
     
     public static func topFromCenterY(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.topConstraint = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.topConstraint!])
+            let top = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: to, attribute: .centerY, multiplier: multiplier, constant: constant)
+            top.identifier = $0.topConstraintIdentifier
+            NSLayoutConstraint.activate([top])
         })
     }
     
     public static func bottomFromTop(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.bottomConstraint = NSLayoutConstraint(item: $0, attribute: .bottom, relatedBy: .equal, toItem: to, attribute: .top, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.bottomConstraint!])
+            let bottom = NSLayoutConstraint(item: $0, attribute: .bottom, relatedBy: .equal, toItem: to, attribute: .top, multiplier: multiplier, constant: constant)
+            bottom.identifier = $0.bottomConstraintIdentifier
+            NSLayoutConstraint.activate([bottom])
         })
     }
     
     public static func topFromBottom(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.topConstraint = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: to, attribute: .bottom, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.topConstraint!])
+            let top = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: to, attribute: .bottom, multiplier: multiplier, constant: constant)
+            top.identifier = $0.topConstraintIdentifier
+            NSLayoutConstraint.activate([top])
         })
     }
     
     public static func leftFromRight(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.leftConstraint = NSLayoutConstraint(item: $0, attribute: .left, relatedBy: .equal, toItem: to, attribute: .right, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.leftConstraint!])
+            let left = NSLayoutConstraint(item: $0, attribute: .left, relatedBy: .equal, toItem: to, attribute: .right, multiplier: multiplier, constant: constant)
+            left.identifier = $0.leftConstraintIdentifier
+            NSLayoutConstraint.activate([left])
         })
     }
     
     public static func rightFromLeft(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.rightConstraint = NSLayoutConstraint(item: $0, attribute: .right, relatedBy: .equal, toItem: to, attribute: .left, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.rightConstraint!])
+            let right = NSLayoutConstraint(item: $0, attribute: .right, relatedBy: .equal, toItem: to, attribute: .left, multiplier: multiplier, constant: constant)
+            right.identifier = $0.rightConstraintIdentifier
+            NSLayoutConstraint.activate([right])
         })
     }
     
     public static func widthFromHeight(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.widthConstraint = NSLayoutConstraint(item: $0, attribute: .width, relatedBy: .equal, toItem: to, attribute: .height, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.widthConstraint!])
+            let width = NSLayoutConstraint(item: $0, attribute: .width, relatedBy: .equal, toItem: to, attribute: .height, multiplier: multiplier, constant: constant)
+            width.identifier = $0.widthConstraintIdentifier
+            NSLayoutConstraint.activate([width])
         })
     }
     
     public static func heightFromWidth(to: Any, _ multiplier: CGFloat = 1, _ constant: CGFloat = 0) -> SCLayout {
         return SCLayout(closure: {
-            $0.heightConstraint = NSLayoutConstraint(item: $0, attribute: .height, relatedBy: .equal, toItem: to, attribute: .width, multiplier: multiplier, constant: constant)
-            NSLayoutConstraint.activate([$0.heightConstraint!])
+            let height = NSLayoutConstraint(item: $0, attribute: .height, relatedBy: .equal, toItem: to, attribute: .width, multiplier: multiplier, constant: constant)
+            height.identifier = $0.heightConstraintIdentifier
+            NSLayoutConstraint.activate([height])
         })
     }
     
     // Vertical or horizontal constraints using the visual format
     public static func format(format: String, _ views: [String : AnyObject], _ metrics: [String : AnyObject]? = nil) -> SCLayout {
-        return SCLayout(closure: {
+        return SCLayout(closure: { v in
             if format.contains("H:") {
-                $0.horizontalFormatConstraints = NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views)
-                NSLayoutConstraint.activate($0.horizontalFormatConstraints!)
+                let horizontalFormat = NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views)
+                _ = horizontalFormat.map { $0.identifier = v.horizontalFormatConstraintsIdentifier }
+                NSLayoutConstraint.activate(horizontalFormat)
             }
             else {
-                $0.verticalFormatConstraints = NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views)
-                NSLayoutConstraint.activate($0.verticalFormatConstraints!)
+                let verticalFormat = NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views)
+                _ = verticalFormat.map { $0.identifier = v.verticalFormatConstraintsIdentifier }
+                NSLayoutConstraint.activate(verticalFormat)
             }
         })
     }
     
     // Horizontal connection to the parent view using the visual format with the spacing between their left/right leading edges
     public static func stretchWidth(_ left: CGFloat = 0, _ right: CGFloat = 0) -> SCLayout {
-        return SCLayout(closure: {
-            $0.widthStretchConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(left)-[view]-(right)-|", options: [], metrics: ["left": left, "right": right], views: ["view": $0])
-            NSLayoutConstraint.activate($0.widthStretchConstraints!)
+        return SCLayout(closure: { v in
+            let widthStretch = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(left)-[view]-(right)-|", options: [], metrics: ["left": left, "right": right], views: ["view": v])
+            _ = widthStretch.map { $0.identifier = v.widthStretchConstraintsIdentifier}
+            NSLayoutConstraint.activate(widthStretch)
         })
     }
     
     // Vertical connection to the parent view using the visual format with the spacing between their top/bottom leading edges
     public static func stretchHeight(_ top: CGFloat = 0, _ bottom: CGFloat = 0) -> SCLayout {
-        return SCLayout(closure: {
-            $0.heightStretchConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(top)-[view]-(bottom)-|", options: [], metrics: ["top": top, "bottom": bottom], views: ["view": $0])
-            NSLayoutConstraint.activate($0.heightStretchConstraints!)
+        return SCLayout(closure: { v in
+            let heightStretch = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(top)-[view]-(bottom)-|", options: [], metrics: ["top": top, "bottom": bottom], views: ["view": v])
+            _ = heightStretch.map { $0.identifier = v.heightStretchConstraintsIdentifier}
+            NSLayoutConstraint.activate(heightStretch)
         })
     }
     
     // Vertical & horizontal connection to the parent view using the visual format with the spacing between their left/top/right/bottom leading edges
     public static func stretch(_ top: CGFloat = 0, _ right: CGFloat = 0, _ bottom: CGFloat = 0, _ left: CGFloat = 0) -> SCLayout {
         
-        return SCLayout(closure: {
-            $0.widthStretchConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(left)-[view]-(right)-|", options: [], metrics: ["left": left, "right": right], views: ["view": $0])
-            NSLayoutConstraint.activate($0.widthStretchConstraints!)
+        return SCLayout(closure: { v in
+            let widthStretch = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(left)-[view]-(right)-|", options: [], metrics: ["left": left, "right": right], views: ["view": v])
+            _ = widthStretch.map { $0.identifier = v.widthStretchConstraintsIdentifier}
+            NSLayoutConstraint.activate(widthStretch)
             
-            $0.heightStretchConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(top)-[view]-(bottom)-|", options: [], metrics: ["top": top, "bottom": bottom], views: ["view": $0])
-            NSLayoutConstraint.activate($0.heightStretchConstraints!)
+            let heightStretch = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(top)-[view]-(bottom)-|", options: [], metrics: ["top": top, "bottom": bottom], views: ["view": v])
+            _ = heightStretch.map { $0.identifier = v.heightStretchConstraintsIdentifier}
+            NSLayoutConstraint.activate(heightStretch)
         })
     }
     
@@ -297,207 +327,175 @@ public struct SCLayout {
         return SCLayout(closure: {
             
             // Layout anchor constraint that defines the anchor’s width attribute with relations of 'equal', 'greater than or equal', 'less than or equal' to a constant
-            if let width = width {
+            if let `width` = width {
+                var widthConstraint: NSLayoutConstraint
                 switch relation! {
                 case .equal:
-                    $0.widthConstraint = $0.widthAnchor.constraint(equalToConstant: width)
+                    widthConstraint = $0.widthAnchor.constraint(equalToConstant: width)
                 case .greaterThanOrEqual:
-                    $0.widthConstraint = $0.widthAnchor.constraint(greaterThanOrEqualToConstant: width)
+                    widthConstraint = $0.widthAnchor.constraint(greaterThanOrEqualToConstant: width)
                 case .lessThanOrEqual:
-                    $0.widthConstraint = $0.widthAnchor.constraint(lessThanOrEqualToConstant: width)
+                    widthConstraint = $0.widthAnchor.constraint(lessThanOrEqualToConstant: width)
                 }
-                
-                $0.widthConstraint!.isActive = true
+                widthConstraint.identifier = $0.widthConstraintIdentifier
+                widthConstraint.isActive = true
             }
             
             // Layout anchor constraint that defines the anchor’s height attribute with relations of 'equal', 'greater than or equal', 'less than or equal' to a constant
-            if let height = height {
+            if let `height` = height {
+                var heightConstraint: NSLayoutConstraint
                 switch relation! {
                 case .equal:
-                    $0.heightConstraint = $0.heightAnchor.constraint(equalToConstant: height)
+                    heightConstraint = $0.heightAnchor.constraint(equalToConstant: height)
                 case .greaterThanOrEqual:
-                    $0.heightConstraint = $0.heightAnchor.constraint(greaterThanOrEqualToConstant: height)
+                    heightConstraint = $0.heightAnchor.constraint(greaterThanOrEqualToConstant: height)
                 case .lessThanOrEqual:
-                    $0.heightConstraint = $0.heightAnchor.constraint(lessThanOrEqualToConstant: height)
+                    heightConstraint = $0.heightAnchor.constraint(lessThanOrEqualToConstant: height)
                 }
-                
-                $0.heightConstraint!.isActive = true
+                heightConstraint.identifier = $0.heightConstraintIdentifier
+                heightConstraint.isActive = true
             }
         })
     }
 }
 
+// MARK: Properties
 public extension UIView {
     
     /**
-     Variables as view's constraint anchors.
-     
-     - widthConstraint: Width constraint.
-     - heightConstraint: Height constraint.
-     - centerXConstraint: Center along the x-axis constraint.
-     - centerYConstraint: Center along the y-axis constraint.
-     - topConstraint: Top constraint.
-     - bottomConstraint: Bottom constraint.
-     - leftConstraint: Left constraint.
-     - rightConstraint: Right constraint.
-     - horizontalFormatConstraints: Horizontal constraints from visual format string.
-     - verticalFormatConstraints: Vertical constraints from visual format string.
-     - widthStretchConstraints: Width constraints from visual format string.
-     - heightStretchConstraints: Height constraints from visual format string.
+     - sc_widthConstraint: Width constraint.
+     - sc_heightConstraint: Height constraint.
+     - sc_centerXConstraint: Center along the x-axis constraint.
+     - sc_centerYConstraint: Center along the y-axis constraint.
+     - sc_topConstraint: Top constraint.
+     - sc_bottomConstraint: Bottom constraint.
+     - sc_leftConstraint: Left constraint.
+     - sc_rightConstraint: Right constraint.
+     - sc_horizontalFormatConstraints: Horizontal constraints from visual format string.
+     - sc_verticalFormatConstraints: Vertical constraints from visual format string.
+     - sc_widthStretchConstraints: Width constraints from visual format string.
+     - sc_heightStretchConstraints: Height constraints from visual format string.
      */
-    fileprivate struct AssociatedKeys {
-        
-        static var widthConstraint: NSLayoutConstraint?
-        static var heightConstraint: NSLayoutConstraint?
-        static var centerXConstraint: NSLayoutConstraint?
-        static var centerYConstraint: NSLayoutConstraint?
-        static var topConstraint: NSLayoutConstraint?
-        static var bottomConstraint: NSLayoutConstraint?
-        static var leftConstraint: NSLayoutConstraint?
-        static var rightConstraint: NSLayoutConstraint?
-        static var horizontalFormatConstraints: [NSLayoutConstraint]?
-        static var verticalFormatConstraints: [NSLayoutConstraint]?
-        static var widthStretchConstraints: [NSLayoutConstraint]?
-        static var heightStretchConstraints: [NSLayoutConstraint]?
+    
+    fileprivate var widthConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_width"  }
     }
     
+    fileprivate var heightConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_height"  }
+    }
     
-    var widthConstraint: NSLayoutConstraint? {
+    fileprivate var centerXConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_center_x"  }
+    }
+    
+    fileprivate var centerYConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_center_y"  }
+    }
+    
+    fileprivate var topConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_top"  }
+    }
+    
+    fileprivate var bottomConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_bottom"  }
+    }
+    
+    fileprivate var leftConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_left"  }
+    }
+    
+    fileprivate var rightConstraintIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_right"  }
+    }
+    
+    fileprivate var horizontalFormatConstraintsIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_horizontal_format"  }
+    }
+    
+    fileprivate var verticalFormatConstraintsIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_vertical_format"  }
+    }
+    
+    fileprivate var widthStretchConstraintsIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_stretch_width"  }
+    }
+    
+    fileprivate var heightStretchConstraintsIdentifier: String {
+        get { return "\(UIView.propertyIdentifier(self))_sc_stretch_height"  }
+    }
+    
+    var sc_widthConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.widthConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.widthConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
+            return self.superview?.constraints.filter({ $0.identifier == self.widthConstraintIdentifier }).first ??
+                self.constraints.filter({ $0.identifier == self.widthConstraintIdentifier }).first
         }
     }
     
-    var heightConstraint: NSLayoutConstraint? {
+    var sc_heightConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.heightConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.heightConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
+            return self.superview?.constraints.filter({ $0.identifier == self.heightConstraintIdentifier }).first ??
+                self.constraints.filter({ $0.identifier == self.heightConstraintIdentifier }).first
         }
     }
     
-    var centerXConstraint: NSLayoutConstraint? {
+    var sc_centerXConstraint: NSLayoutConstraint? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.centerXConstraintIdentifier }).first }
+    }
+    
+    var sc_centerYConstraint: NSLayoutConstraint? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.centerYConstraintIdentifier }).first }
+    }
+    
+    var sc_topConstraint: NSLayoutConstraint? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.topConstraintIdentifier }).first }
+    }
+    
+    var sc_bottomConstraint: NSLayoutConstraint? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.bottomConstraintIdentifier }).first }
+    }
+    
+    var sc_leftConstraint: NSLayoutConstraint? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.leftConstraintIdentifier }).first }
+    }
+    
+    var sc_rightConstraint: NSLayoutConstraint? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.rightConstraintIdentifier }).first }
+    }
+    
+    var sc_horizontalFormatConstraints: [NSLayoutConstraint]? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.centerXConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.centerXConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
+            guard let `superview` = self.superview else { return nil }
+            return superview.constraints.filter({ $0.identifier == self.horizontalFormatConstraintsIdentifier })
         }
     }
     
-    var centerYConstraint: NSLayoutConstraint? {
+    var sc_verticalFormatConstraints: [NSLayoutConstraint]? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.centerYConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.centerYConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
+            guard let `superview` = self.superview else { return nil }
+            return superview.constraints.filter({ $0.identifier == self.verticalFormatConstraintsIdentifier })
         }
     }
     
-    var topConstraint: NSLayoutConstraint? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.topConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.topConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
+    var sc_widthStretchConstraints: [NSLayoutConstraint]? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.widthStretchConstraintsIdentifier }) }
     }
     
-    var bottomConstraint: NSLayoutConstraint? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.bottomConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.bottomConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
+    var sc_heightStretchConstraints: [NSLayoutConstraint]? {
+        get { return self.superview?.constraints.filter({ $0.identifier == self.heightStretchConstraintsIdentifier }) }
     }
     
-    var leftConstraint: NSLayoutConstraint? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.leftConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.leftConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
+    private static func propertyIdentifier(_ key: AnyObject) -> String {
+        return "\(unsafeBitCast(key, to: Int.self))"
     }
-    
-    var rightConstraint: NSLayoutConstraint? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.rightConstraint) as? NSLayoutConstraint
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.rightConstraint, newValue as NSLayoutConstraint?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
-    }
-    
-    var horizontalFormatConstraints: [NSLayoutConstraint]? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.horizontalFormatConstraints) as? [NSLayoutConstraint]
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.horizontalFormatConstraints, newValue as [NSLayoutConstraint]?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
-    }
-    
-    var verticalFormatConstraints: [NSLayoutConstraint]? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.verticalFormatConstraints) as? [NSLayoutConstraint]
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.verticalFormatConstraints, newValue as [NSLayoutConstraint]?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
-    }
-    
-    var widthStretchConstraints: [NSLayoutConstraint]? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.widthStretchConstraints) as? [NSLayoutConstraint]
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.widthStretchConstraints, newValue as [NSLayoutConstraint]?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
-    }
-    
-    var heightStretchConstraints: [NSLayoutConstraint]? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.heightStretchConstraints) as? [NSLayoutConstraint]
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.heightStretchConstraints, newValue as [NSLayoutConstraint]?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
-    }
+}
+
+//MARK: Handlers
+public extension UIView {
     
     // Sequence call
     func scLayout(_ layouts: [SCLayout]) {
         guard !layouts.isEmpty else { return }
-        
         var layouts = layouts
         
         // Take out the next layout
