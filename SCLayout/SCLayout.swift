@@ -465,15 +465,13 @@ public extension UIView {
     
     var sc_horizontalFormatConstraints: [NSLayoutConstraint]? {
         get {
-            guard let `superview` = self.superview else { return nil }
-            return superview.constraints.filter({ $0.identifier == self.horizontalFormatConstraintsIdentifier })
+            return self.constraints.filter({ $0.identifier == self.horizontalFormatConstraintsIdentifier })
         }
     }
     
     var sc_verticalFormatConstraints: [NSLayoutConstraint]? {
         get {
-            guard let `superview` = self.superview else { return nil }
-            return superview.constraints.filter({ $0.identifier == self.verticalFormatConstraintsIdentifier })
+            return self.constraints.filter({ $0.identifier == self.verticalFormatConstraintsIdentifier })
         }
     }
     
