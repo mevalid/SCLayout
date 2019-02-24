@@ -323,7 +323,7 @@ public struct SCLayout {
         })
     }
     
-    public static func constant(width: CGFloat? = nil, height: CGFloat? = nil, _ relation: NSLayoutRelation? = .equal) -> SCLayout {
+    public static func constant(width: CGFloat? = nil, height: CGFloat? = nil, _ relation: NSLayoutConstraint.Relation? = .equal) -> SCLayout {
         return SCLayout(closure: {
             
             // Layout anchor constraint that defines the anchor’s width attribute with relations of 'equal', 'greater than or equal', 'less than or equal' to a constant
